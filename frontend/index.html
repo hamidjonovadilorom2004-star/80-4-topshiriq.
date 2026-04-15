@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NFT VoteHub DApp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-glow bg-glow-a"></div>
+    <div class="bg-glow bg-glow-b"></div>
+
+    <header class="hero">
+      <div>
+        <p class="badge">Web3 + Solidity + Ethers</p>
+        <h1>NFT VoteHub</h1>
+        <p class="subtitle">
+          NFT mint qiling, proposal yarating, voting qiling va natijalarni bitta interfeysda boshqaring.
+        </p>
+      </div>
+      <div class="wallet-box">
+        <button id="connectBtn">Wallet Ulanish</button>
+        <p id="walletAddress">Ulanmagan</p>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>Statistika</h2>
+        <div class="stats">
+          <div>
+            <span class="label">Mint Fee</span>
+            <strong id="mintFeeValue">-</strong>
+          </div>
+          <div>
+            <span class="label">NFT Soni</span>
+            <strong id="tokenCountValue">-</strong>
+          </div>
+          <div>
+            <span class="label">Proposal Soni</span>
+            <strong id="proposalCountValue">-</strong>
+          </div>
+        </div>
+        <button id="refreshBtn" class="secondary">Yangilash</button>
+      </section>
+
+      <section class="card">
+        <h2>NFT Mint</h2>
+        <form id="mintForm">
+          <label>
+            Qabul qiluvchi wallet
+            <input id="mintTo" placeholder="0x..." />
+          </label>
+          <label>
+            Token URI (IPFS)
+            <input id="mintUri" placeholder="ipfs://..." />
+          </label>
+          <button type="submit">Mint Qilish</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>NFT Yangilash / O‘chirish</h2>
+        <form id="updateNftForm">
+          <label>
+            Token ID
+            <input id="updateTokenId" type="number" min="1" />
+          </label>
+          <label>
+            Yangi URI
+            <input id="updateUri" placeholder="ipfs://new..." />
+          </label>
+          <button type="submit">URI Yangilash</button>
+        </form>
+        <form id="burnNftForm">
+          <label>
+            Token ID
+            <input id="burnTokenId" type="number" min="1" />
+          </label>
+          <button type="submit" class="danger">NFT Burn</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Proposal Yaratish</h2>
+        <form id="proposalForm">
+          <label>
+            Sarlavha
+            <input id="proposalTitle" placeholder="Masalan: Banner dizaynini yangilash" />
+          </label>
+          <label>
+            Tavsif
+            <textarea id="proposalDesc" rows="3" placeholder="Taklif haqida qisqacha"></textarea>
+          </label>
+          <label>
+            Muddat (daqiqada)
+            <input id="proposalDuration" type="number" min="1" value="30" />
+          </label>
+          <button type="submit">Proposal Qo‘shish</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Proposal CRUD</h2>
+        <form id="updateProposalForm">
+          <label>
+            Proposal ID
+            <input id="updProposalId" type="number" min="1" />
+          </label>
+          <label>
+            Yangi sarlavha
+            <input id="updProposalTitle" />
+          </label>
+          <label>
+            Yangi tavsif
+            <textarea id="updProposalDesc" rows="3"></textarea>
+          </label>
+          <button type="submit">Proposal Yangilash</button>
+        </form>
+        <form id="deleteProposalForm">
+          <label>
+            Proposal ID
+            <input id="delProposalId" type="number" min="1" />
+          </label>
+          <button type="submit" class="danger">Proposal O‘chirish</button>
+        </form>
+      </section>
+
+      <section class="card card-full">
+        <h2>Proposallar va Ovoz Berish</h2>
+        <div id="proposalsList" class="proposal-list"></div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
