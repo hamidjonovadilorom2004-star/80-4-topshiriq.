@@ -1,0 +1,9 @@
+node_modules/
+artifacts/
+cache/
+coverage/
+typechain-types/
+dist/
+*.log
+.env
+frontend/.DS_Store
